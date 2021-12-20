@@ -1,0 +1,10 @@
+{% extends "quote.html" %}
+
+{% block quoted %}
+
+    <div class="m-3 p-3">
+        <h3>{{ stock.name }}</h3>
+        <p>Price: {{ stock.price | usd }}</p>
+    </div>
+
+{% endblock %}

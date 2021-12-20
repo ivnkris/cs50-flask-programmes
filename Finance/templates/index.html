@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <h3>Portfolio of Stock</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Stock Symbol</th>
+                <th>Number Owned</th>
+                <th>Current Price</th>
+                <th>Value of Holding</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{ stock.symbol }}</td>
+                    <td>{{ stock.amount }}</td>
+                    <td>{{ stock.price | usd }}</td>
+                    <td>{{ stock.total | usd }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% for c in cash %}
+        <p class="m-2 p-2">Your current cash balance is {{ c.cash | usd }}</p>
+        <p>The grand total of your holdings is {{ c.total | usd }}</p>
+    {% endfor %}
+{% endblock %}
